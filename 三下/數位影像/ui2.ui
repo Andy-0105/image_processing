@@ -325,6 +325,8 @@
     <addaction name="perspective_transform"/>
     <addaction name="cornerharris"/>
     <addaction name="contour_action"/>
+    <addaction name="erode"/>
+    <addaction name="dilate"/>
    </widget>
    <addaction name="file"/>
    <addaction name="setting"/>
@@ -419,6 +421,16 @@
   <action name="contour_action">
    <property name="text">
     <string>輪廓檢測</string>
+   </property>
+  </action>
+  <action name="erode">
+   <property name="text">
+    <string>侵蝕</string>
+   </property>
+  </action>
+  <action name="dilate">
+   <property name="text">
+    <string>膨脹</string>
    </property>
   </action>
  </widget>

@@ -37,7 +37,16 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         self.ui.perspective_transform.triggered.connect(self.Perspective_transform)
         self.ui.cornerharris.triggered.connect(self.cornerharris)
         self.ui.contour_action.triggered.connect(self.contour)
-
+        self.ui.erode.triggered.connect(self.erode)
+        self.ui.dilate.triggered.connect(self.dilate)
+    def dilate(self):
+        kernel = np.ones((4, 4), np.uint8)
+        dilation = cv2.dilate(self.img, kernel, iterations=1)
+        cv2.imshow('Result', dilation)
+    def erode(self):
+        kernel = np.ones((4, 4), np.uint8)
+        erosion = cv2.erode(self.img, kernel, iterations=1)
+        cv2.imshow('Result', erosion)
     def contour(self):
         gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
 
@@ -170,6 +179,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
     def open_file(self):
         filename, filetype = QFileDialog.getOpenFileName(self,"Open file","./")
         self.img = cv2.imdecode(np.fromfile(filename,dtype=np.uint8),-1)
+        self.img=cv2.resize(self.img,(1024,512))
         self.ui.img_inf.setText(f"影像尺寸:{self.img.shape}\n影像路徑:\n{filename}")
         height, width, channel = self.img.shape
         bytesPerline = 3 * width

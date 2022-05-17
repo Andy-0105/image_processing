@@ -145,6 +145,10 @@ class Ui_MainWindow(object):
         self.cornerharris.setObjectName("cornerharris")
         self.contour_action = QtWidgets.QAction(MainWindow)
         self.contour_action.setObjectName("contour_action")
+        self.erode = QtWidgets.QAction(MainWindow)
+        self.erode.setObjectName("erode")
+        self.dilate = QtWidgets.QAction(MainWindow)
+        self.dilate.setObjectName("dilate")
         self.file.addAction(self.read_img)
         self.file.addAction(self.save_img)
         self.setting.addAction(self.ROI)
@@ -161,6 +165,8 @@ class Ui_MainWindow(object):
         self.image_Preprocessing.addAction(self.perspective_transform)
         self.image_Preprocessing.addAction(self.cornerharris)
         self.image_Preprocessing.addAction(self.contour_action)
+        self.image_Preprocessing.addAction(self.erode)
+        self.image_Preprocessing.addAction(self.dilate)
         self.menubar.addAction(self.file.menuAction())
         self.menubar.addAction(self.setting.menuAction())
         self.menubar.addAction(self.image_Preprocessing.menuAction())
@@ -198,6 +204,8 @@ class Ui_MainWindow(object):
         self.perspective_transform.setText(_translate("MainWindow", "透視投影轉換"))
         self.cornerharris.setText(_translate("MainWindow", " 角點檢測"))
         self.contour_action.setText(_translate("MainWindow", "輪廓檢測"))
+        self.erode.setText(_translate("MainWindow", "侵蝕"))
+        self.dilate.setText(_translate("MainWindow", "膨脹"))
 
 
 if __name__ == "__main__":
