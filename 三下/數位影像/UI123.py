@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1200, 791)
+        MainWindow.resize(1200, 931)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
@@ -143,6 +143,8 @@ class Ui_MainWindow(object):
         self.perspective_transform.setObjectName("perspective_transform")
         self.cornerharris = QtWidgets.QAction(MainWindow)
         self.cornerharris.setObjectName("cornerharris")
+        self.contour_action = QtWidgets.QAction(MainWindow)
+        self.contour_action.setObjectName("contour_action")
         self.file.addAction(self.read_img)
         self.file.addAction(self.save_img)
         self.setting.addAction(self.ROI)
@@ -158,6 +160,7 @@ class Ui_MainWindow(object):
         self.image_Preprocessing.addAction(self.affine_transform)
         self.image_Preprocessing.addAction(self.perspective_transform)
         self.image_Preprocessing.addAction(self.cornerharris)
+        self.image_Preprocessing.addAction(self.contour_action)
         self.menubar.addAction(self.file.menuAction())
         self.menubar.addAction(self.setting.menuAction())
         self.menubar.addAction(self.image_Preprocessing.menuAction())
@@ -173,7 +176,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "垂直位移量"))
         self.label_5.setText(_translate("MainWindow", "旋轉角度"))
         self.label_6.setText(_translate("MainWindow", "偏移倍率"))
-        self.cornerharris_label.setText(_translate("MainWindow", "角點偵測"))
+        self.cornerharris_label.setText(_translate("MainWindow", "角點檢測"))
         self.file.setTitle(_translate("MainWindow", "檔案"))
         self.setting.setTitle(_translate("MainWindow", "設定"))
         self.image_Preprocessing.setTitle(_translate("MainWindow", "影像處理"))
@@ -194,6 +197,7 @@ class Ui_MainWindow(object):
         self.affine_transform.setText(_translate("MainWindow", "仿射轉換"))
         self.perspective_transform.setText(_translate("MainWindow", "透視投影轉換"))
         self.cornerharris.setText(_translate("MainWindow", " 角點檢測"))
+        self.contour_action.setText(_translate("MainWindow", "輪廓檢測"))
 
 
 if __name__ == "__main__":

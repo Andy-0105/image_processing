@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>791</height>
+    <height>931</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -272,7 +272,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>角點偵測</string>
+     <string>角點檢測</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cornerharris_lineEdit">
@@ -324,6 +324,7 @@
     <addaction name="affine_transform"/>
     <addaction name="perspective_transform"/>
     <addaction name="cornerharris"/>
+    <addaction name="contour_action"/>
    </widget>
    <addaction name="file"/>
    <addaction name="setting"/>
@@ -413,6 +414,11 @@
   <action name="cornerharris">
    <property name="text">
     <string> 角點檢測</string>
+   </property>
+  </action>
+  <action name="contour_action">
+   <property name="text">
+    <string>輪廓檢測</string>
    </property>
   </action>
  </widget>

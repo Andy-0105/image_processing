@@ -36,8 +36,27 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         self.ui.affine_transform.triggered.connect(self.Affine_Transformation)
         self.ui.perspective_transform.triggered.connect(self.Perspective_transform)
         self.ui.cornerharris.triggered.connect(self.cornerharris)
+        self.ui.contour_action.triggered.connect(self.contour)
 
+    def contour(self):
+        gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
 
+        blurred = cv2.GaussianBlur(gray, (11, 11), 0)
+
+        canny = cv2.Canny(blurred, 30, 150)
+        # canny_dilate = cv2.dilate(canny, None, iterations=1)
+        # canny_erode = cv2.erode(canny_dilate, None, iterations=1)
+
+        (cnts, _) = cv2.findContours(canny.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        print("I count {} coins in this image".format(len(cnts)))
+
+        contours = self.img.copy()
+        cv2.drawContours(contours, cnts, -1, (0, 255, 0), 2)
+
+        # loop over the contours individually
+
+        cv2.imshow("Result:", contours)
     def cornerharris(self):
         thresh = self.ui.cornerharris_lineEdit.text()
         # Detector parameters
@@ -55,7 +74,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         for i in range(dst_norm.shape[0]):
             for j in range(dst_norm.shape[1]):
                 if int(dst_norm[i, j]) > int(thresh):
-                    cv2.circle(dst_norm_scaled, (j, i), 5, (0), 2)
+                    cv2.circle(dst_norm_scaled, (j, i), 5, (255), 2)
         # Showing the result
         cv2.imshow("cornerharris", dst_norm_scaled)
     def Perspective_transform(self):
