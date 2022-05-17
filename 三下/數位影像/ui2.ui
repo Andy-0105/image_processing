@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>700</height>
+    <height>791</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -224,9 +224,9 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>510</y>
-      <width>47</width>
-      <height>12</height>
+      <y>500</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -262,6 +262,29 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="cornerharris_label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>620</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>角點偵測</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cornerharris_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>660</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -269,7 +292,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="file">
@@ -300,6 +323,7 @@
     <addaction name="rotate"/>
     <addaction name="affine_transform"/>
     <addaction name="perspective_transform"/>
+    <addaction name="cornerharris"/>
    </widget>
    <addaction name="file"/>
    <addaction name="setting"/>
@@ -384,6 +408,11 @@
   <action name="perspective_transform">
    <property name="text">
     <string>透視投影轉換</string>
+   </property>
+  </action>
+  <action name="cornerharris">
+   <property name="text">
+    <string> 角點檢測</string>
    </property>
   </action>
  </widget>

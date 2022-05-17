@@ -35,6 +35,29 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         self.ui.scale_horizontalSlider.valueChanged.connect(self.Affine_Transformation_slider)
         self.ui.affine_transform.triggered.connect(self.Affine_Transformation)
         self.ui.perspective_transform.triggered.connect(self.Perspective_transform)
+        self.ui.cornerharris.triggered.connect(self.cornerharris)
+
+
+    def cornerharris(self):
+        thresh = self.ui.cornerharris_lineEdit.text()
+        # Detector parameters
+        blockSize = 2
+        apertureSize = 3
+        k = 0.04
+        # Detecting corners
+        src_gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+        dst = cv2.cornerHarris(src_gray, blockSize, apertureSize, k)
+        # Normalizing
+        dst_norm = np.empty(dst.shape, dtype=np.float32)
+        cv2.normalize(dst, dst_norm, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+        dst_norm_scaled = cv2.convertScaleAbs(dst_norm)
+        # Drawing a circle around corners
+        for i in range(dst_norm.shape[0]):
+            for j in range(dst_norm.shape[1]):
+                if int(dst_norm[i, j]) > int(thresh):
+                    cv2.circle(dst_norm_scaled, (j, i), 5, (0), 2)
+        # Showing the result
+        cv2.imshow("cornerharris", dst_norm_scaled)
     def Perspective_transform(self):
         self.ui.image_label.mousePressEvent=self.mouse_event
         self.ui.image_label.mouseReleaseEvent=self.mouse_ReleaseEvent
