@@ -21,7 +21,7 @@ python start.py
 
 可經由選單中影像處理選項選擇需要項目
 
-# 功能列表
+# function list
 1.檔案
   + 寫入影像   
   + 儲存影像
